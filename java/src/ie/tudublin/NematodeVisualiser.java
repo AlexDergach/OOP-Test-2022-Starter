@@ -2,6 +2,8 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 
+import javax.xml.validation.Validator;
+
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
@@ -9,13 +11,19 @@ import processing.data.TableRow;
 public class NematodeVisualiser extends PApplet
 {
 
+	public float border;
+	public int limbSize = 40;
+	public int rowheight = 60;
+	public int index = 0;
+
 	ArrayList<Nematode> nematodes = new ArrayList<Nematode>();
 
 	public void keyPressed()
 	{		
-		if (keyCode == LEFT)
-		{
-		}		
+			if (keyCode == LEFT)
+			{
+				index++;
+			}		
 	}
 
 	public void loadNematode(){
@@ -29,25 +37,50 @@ public class NematodeVisualiser extends PApplet
 
 	}
 
+	void printNematode()
+    {
+        for(Nematode n:nematodes)
+        {
+            System.out.println(n);
+        }
+    }
+
 	public void settings()
 	{
-		size(800, 800);
+		size(600, 600);
 	}
 
 	public void setup() 
 	{
 		colorMode(HSB);
+
+		loadNematode();
+		printNematode();
+
+		border = width * 0.1f;
+
 		background(0);
 		smooth();				
 	}
-	
 
-	public void loadNematodes()
+	public void drawNematode()
 	{
-	}
 
+		
+		if(index < nematodes.size())
+		{
+			nematodes.get(index).render(this, index);	
+		}
+		else{
+			index = 0;
+		}
+
+	
+	}
 
 	public void draw()
 	{	
+		background(0);
+		drawNematode();
 	}
 }

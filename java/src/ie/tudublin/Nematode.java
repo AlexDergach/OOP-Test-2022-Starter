@@ -1,6 +1,8 @@
 package ie.tudublin;
 
 import processing.data.TableRow;
+import processing.core.PApplet;
+
 
 public class Nematode
 {
@@ -61,6 +63,47 @@ public class Nematode
             tr.getInt("eyes")
         );
     }
+
+
+    public void render(NematodeVisualiser nv, int value)
+    {
+
+			
+        nv.stroke(nv.map(value, 0, 10, 0, 255), 255, 255);
+        
+        int width = nv.width;
+        int height = nv.height;
+        float border = nv.border;
+        int limbSize = nv.limbSize;
+
+        // System.out.println(this.limbs);
+
+        for(int i = 1; i <= this.length; i++)
+        {
+            float limb = (height/2 - border - border) + limbSize * i;
+            nv.noFill();
+    
+            nv.circle(width/2, height - limb, limbSize);
+        }
+
+
+
+        nv.noFill();
+
+
+
+        //Left arrow
+        nv.line(width - border * 2, width/2, width - border * 3, width/2);
+        nv.line(width - border * 2, width/2, width - border * 2 - 10, height/2 - 10);
+		nv.line(width - border * 2, width/2, width - border * 2 - 10, height/2 + 10);
+
+		//right arrow
+		nv.line(border * 2, width/2, border * 3, width/2);
+		nv.line(border * 2, width/2,border * 2 + 10, height/2 - 10);
+		nv.line(border * 2, width/2,border * 2 + 10, height/2 + 10);
+
+    }
+
 
 
     @Override
