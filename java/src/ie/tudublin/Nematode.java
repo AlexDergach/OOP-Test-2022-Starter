@@ -75,21 +75,22 @@ public class Nematode
         int height = nv.height;
         float border = nv.border;
         int limbSize = nv.limbSize;
+        float limb;
 
-        // System.out.println(this.limbs);
 
         for(int i = 1; i <= this.length; i++)
         {
-            float limb = (height/2 - border - border) + limbSize * i;
+            limb = border + border + limbSize * i;
             nv.noFill();
     
             nv.circle(width/2, height - limb, limbSize);
+            if(i == this.length){
+                nv.fill(nv.map(value, 0, 10, 0, 255), 255, 255);
+                nv.textAlign(nv.CENTER,nv.CENTER);
+                nv.text(this.name, width/2, height -limb - 50);
+            }
+
         }
-
-
-
-        nv.noFill();
-
 
 
         //Left arrow
