@@ -68,8 +68,6 @@ public class Nematode
         return "Nematode [eyes=" + eyes + ", gender=" + gender + ", length=" + length + ", limbs=" + limbs + ", name="
                 + name + "]";
     }
-
-    
     
 
 }
