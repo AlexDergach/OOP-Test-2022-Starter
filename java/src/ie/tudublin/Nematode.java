@@ -80,6 +80,8 @@ public class Nematode
 
         for(int i = 1; i <= this.length; i++)
         {
+            String g = this.gender;
+            
             limb = border + border + limbSize * i;
             nv.noFill();
     
@@ -88,9 +90,25 @@ public class Nematode
                 nv.fill(nv.map(value, 0, 10, 0, 255), 255, 255);
                 nv.textAlign(nv.CENTER,nv.CENTER);
                 nv.text(this.name, width/2, height -limb - 50);
+
+
+
+                if(g.equals("m")){
+                    nv.line(width/2, limb ,width/2, height - limb + 10);
+                    nv.noFill();
+                    nv.circle(width/2, limb + limb + 5 , 8);
+        
+                }
+            }
+
+            for(int j = 0; j < this.limbs; j++){
+                nv.line(width/2 - limbSize, height - limb ,width/2 - limbSize + 20,height - limb);
+                nv.line(width/2 + limbSize, height - limb ,width/2 + limbSize - 20,height - limb);
             }
 
         }
+ 
+
 
 
         //Left arrow
